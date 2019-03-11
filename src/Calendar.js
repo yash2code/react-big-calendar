@@ -739,7 +739,8 @@ class Calendar extends React.Component {
     startAccessor: 'start',
     endAccessor: 'end',
     resourceAccessor: 'resourceId',
-
+    t2Accessor: 't2',
+    t3Accessor: 't3',
     resourceIdAccessor: 'id',
     resourceTitleAccessor: 'title',
 
