@@ -2749,7 +2749,9 @@ var Event =
 
       var _slotMetrics$getRange = slotMetrics.getRange(
           accessors.start(data),
-          accessors.end(data)
+          accessors.end(data),
+          accessors.t2(data),
+          accessors.t3(data)
         ),
         start = _slotMetrics$getRange.start,
         startDate = _slotMetrics$getRange.startDate,

@@ -14,8 +14,13 @@ class Event {
       t3,
       t3height,
       t2t3,
-      t2t3height
-    } = slotMetrics.getRange(accessors.start(data), accessors.end(data))
+      t2t3height,
+    } = slotMetrics.getRange(
+      accessors.start(data),
+      accessors.end(data),
+      accessors.t2(data),
+      accessors.t3(data)
+    )
 
     this.start = start
     this.end = end
@@ -24,12 +29,12 @@ class Event {
     this.top = top
     this.height = height
     this.data = data
-    this.t2 = t2;
-    this.t2height = t2height/height * 100;
-    this.t3 = t3;
-    this.t3height = t3height/height * 100;
-    this.t2t3 = t2t3;
-    this.t2t3height = t2t3height/height * 100;
+    this.t2 = t2
+    this.t2height = (t2height / height) * 100
+    this.t3 = t3
+    this.t3height = (t3height / height) * 100
+    this.t2t3 = t2t3
+    this.t2t3height = (t2t3height / height) * 100
   }
 
   /**
@@ -205,9 +210,9 @@ function getStyledEvents({
       height: event.height,
       width: event.width,
       xOffset: event.xOffset,
-      t2height:event.t2height,
-      t3height:event.t3height,
-      t2t3height: event.t2t3height
+      t2height: event.t2height,
+      t3height: event.t3height,
+      t2t3height: event.t2t3height,
     },
   }))
 }
