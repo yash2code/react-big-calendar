@@ -2210,7 +2210,8 @@ function getSlotMetrics$1(_ref) {
   var lastSlotMinFromStart = slots.length * step;
   slots.push(new Date(start.getFullYear(), start.getMonth(), start.getDate(), 0, minutesFromMidnight + lastSlotMinFromStart, 0, 0));
 
-  function positionFromDate(date, start) {
+  function positionFromDate(date, startMin) {
+    start = startMin ? startMin : start;
     var diff = dates.diff(start, date, 'minutes') + getDstOffset(start, date);
     return Math.min(diff, totalMin);
   }
