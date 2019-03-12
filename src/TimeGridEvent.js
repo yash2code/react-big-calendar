@@ -22,32 +22,40 @@ function TimeGridEvent(props) {
   let tooltip = accessors.tooltip(event)
   let end = accessors.end(event)
   let start = accessors.start(event)
-  let t2 = accessors.t2(event);
-  let t3 = accessors.t3(event);
+  // let t2 = accessors.t2(event);
+  // let t3 = accessors.t3(event);
 
   let userProps = getters.eventProp(event, start, end, selected)
 
   let { height, top, width, xOffset, t2height, t3height, t2t3height } = style
   const inner = [
-    <div key="1" className="rbc-event-first" style={{
-      width:'100%',
-      height:t2height + '%',
-      background: 'red'
-    }}>
-      
-    </div>,
-    <div key="2" className="rbc-event-second" style={{
-      width:'100%',
-      height:t2t3height + '%',
-      background: 'blue',
-    }}>
-      
-    </div>,
-    <div key="3" className="rbc-event-third" style={{
-      width:'100%',
-      height:t3height + '%',
-      background: 'green',
-    }}></div>
+    <div
+      key="1"
+      className="rbc-event-first"
+      style={{
+        width: '100%',
+        height: t2height + '%',
+        background: 'red',
+      }}
+    />,
+    <div
+      key="2"
+      className="rbc-event-second"
+      style={{
+        width: '100%',
+        height: t2t3height + '%',
+        background: 'blue',
+      }}
+    />,
+    <div
+      key="3"
+      className="rbc-event-third"
+      style={{
+        width: '100%',
+        height: t3height + '%',
+        background: 'green',
+      }}
+    />,
   ]
 
   return (
@@ -59,8 +67,8 @@ function TimeGridEvent(props) {
           ...userProps.style,
           top: `${top}%`,
           height: `${height}%`,
-          background:'none',
-          padding:0,
+          background: 'none',
+          padding: 0,
           [isRtl ? 'right' : 'left']: `${Math.max(0, xOffset)}%`,
           width: `${width}%`,
         }}

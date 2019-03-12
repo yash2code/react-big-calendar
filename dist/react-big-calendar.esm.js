@@ -3069,9 +3069,9 @@ function TimeGridEvent(props) {
   var title = accessors.title(event)
   var tooltip = accessors.tooltip(event)
   var end = accessors.end(event)
-  var start = accessors.start(event)
-  var t2 = accessors.t2(event)
-  var t3 = accessors.t3(event)
+  var start = accessors.start(event) // let t2 = accessors.t2(event);
+  // let t3 = accessors.t3(event);
+
   var userProps = getters.eventProp(event, start, end, selected)
   var height = style.height,
     top = style.top,
@@ -5348,6 +5348,8 @@ var Calendar =
     _proto.getContext = function getContext(_ref2) {
       var startAccessor = _ref2.startAccessor,
         endAccessor = _ref2.endAccessor,
+        t2Accessor = _ref2.t2Accessor,
+        t3Accessor = _ref2.t3Accessor,
         allDayAccessor = _ref2.allDayAccessor,
         tooltipAccessor = _ref2.tooltipAccessor,
         titleAccessor = _ref2.titleAccessor,
@@ -5401,6 +5403,8 @@ var Calendar =
         accessors: {
           start: wrapAccessor(startAccessor),
           end: wrapAccessor(endAccessor),
+          t2: wrapAccessor(t2Accessor),
+          t3: wrapAccessor(t3Accessor),
           allDay: wrapAccessor(allDayAccessor),
           tooltip: wrapAccessor(tooltipAccessor),
           title: wrapAccessor(titleAccessor),
@@ -5649,6 +5653,28 @@ Calendar.propTypes =
          * @type {(func|string)}
          */
         startAccessor: accessor,
+
+        /**
+         * The t2 date/time of the event. Must resolve to a JavaScript `Date` object.
+         *
+         * ```js
+         * string | (event: Object) => Date
+         * ```
+         *
+         * @type {(func|string)}
+         */
+        t2Accessor: accessor,
+
+        /**
+         * The t3 date/time of the event. Must resolve to a JavaScript `Date` object.
+         *
+         * ```js
+         * string | (event: Object) => Date
+         * ```
+         *
+         * @type {(func|string)}
+         */
+        t3Accessor: accessor,
 
         /**
          * The end date/time of the event. Must resolve to a JavaScript `Date` object.

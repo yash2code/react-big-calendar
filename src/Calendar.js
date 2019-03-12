@@ -161,6 +161,28 @@ class Calendar extends React.Component {
     startAccessor: accessor,
 
     /**
+     * The t2 date/time of the event. Must resolve to a JavaScript `Date` object.
+     *
+     * ```js
+     * string | (event: Object) => Date
+     * ```
+     *
+     * @type {(func|string)}
+     */
+    t2Accessor: accessor,
+
+    /**
+     * The t3 date/time of the event. Must resolve to a JavaScript `Date` object.
+     *
+     * ```js
+     * string | (event: Object) => Date
+     * ```
+     *
+     * @type {(func|string)}
+     */
+    t3Accessor: accessor,
+
+    /**
      * The end date/time of the event. Must resolve to a JavaScript `Date` object.
      *
      * ```js
@@ -761,6 +783,8 @@ class Calendar extends React.Component {
   getContext({
     startAccessor,
     endAccessor,
+    t2Accessor,
+    t3Accessor,
     allDayAccessor,
     tooltipAccessor,
     titleAccessor,
@@ -801,6 +825,8 @@ class Calendar extends React.Component {
       accessors: {
         start: wrapAccessor(startAccessor),
         end: wrapAccessor(endAccessor),
+        t2: wrapAccessor(t2Accessor),
+        t3: wrapAccessor(t3Accessor),
         allDay: wrapAccessor(allDayAccessor),
         tooltip: wrapAccessor(tooltipAccessor),
         title: wrapAccessor(titleAccessor),
