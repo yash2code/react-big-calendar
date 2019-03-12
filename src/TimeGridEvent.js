@@ -22,8 +22,8 @@ function TimeGridEvent(props) {
   let tooltip = accessors.tooltip(event)
   let end = accessors.end(event)
   let start = accessors.start(event)
-  // let t2 = accessors.t2(event);
-  // let t3 = accessors.t3(event);
+  let t2 = accessors.t2(event)
+  let t3 = accessors.t3(event)
 
   let userProps = getters.eventProp(event, start, end, selected)
 
