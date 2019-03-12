@@ -124,15 +124,15 @@ export function getSlotMetrics({ min: start, max: end, step, timeslots }) {
       return dates.gt(dates.merge(end, date), end, 'minutes')
     },
 
-    getRange(rangeStart, rangeEnd) {
+    getRange(rangeStart, rangeEnd, t2end = new Date(), t3start = new Date()) {
       rangeStart = dates.min(end, dates.max(start, rangeStart))
       rangeEnd = dates.min(end, dates.max(start, rangeEnd))
 
       const rangeStartMin = positionFromDate(rangeStart)
       const rangeEndMin = positionFromDate(rangeEnd)
       const t2rangeEnd = positionFromDate(t2end)
-      const t3rangeStart = positionFromDate(rangeEnd,t3start)
-      const t2t3 = positionFromDate(t3start,t2end)
+      const t3rangeStart = positionFromDate(rangeEnd, t3start)
+      const t2t3 = positionFromDate(t3start, t2end)
       const top = (rangeStartMin / (step * numSlots)) * 100
 
       return {
@@ -142,12 +142,12 @@ export function getSlotMetrics({ min: start, max: end, step, timeslots }) {
         startDate: rangeStart,
         end: positionFromDate(rangeEnd),
         endDate: rangeEnd,
-        t2end:t2rangeEnd,
-        t2height:t2rangeEnd / (step * numSlots) * 100 - top,
-        t3start:t3rangeStart,
-        t3height:t3rangeStart / (step * numSlots) * 100 ,
-        t2t3range : t2t3,
-        t2t3height : t2t3 / (step * numSlots) * 100 
+        t2end: t2rangeEnd,
+        t2height: (t2rangeEnd / (step * numSlots)) * 100 - top,
+        t3start: t3rangeStart,
+        t3height: (t3rangeStart / (step * numSlots)) * 100,
+        t2t3range: t2t3,
+        t2t3height: (t2t3 / (step * numSlots)) * 100,
       }
     },
   }
