@@ -2705,7 +2705,15 @@ function getSlotMetrics$1(_ref) {
     startsAfter: function startsAfter(date) {
       return dates.gt(dates.merge(end, date), end, 'minutes')
     },
-    getRange: function getRange(rangeStart, rangeEnd) {
+    getRange: function getRange(rangeStart, rangeEnd, t2end, t3start) {
+      if (t2end === void 0) {
+        t2end = new Date()
+      }
+
+      if (t3start === void 0) {
+        t3start = new Date()
+      }
+
       rangeStart = dates.min(end, dates.max(start, rangeStart))
       rangeEnd = dates.min(end, dates.max(start, rangeEnd))
       var rangeStartMin = positionFromDate(rangeStart)
