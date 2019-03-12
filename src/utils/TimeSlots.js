@@ -59,7 +59,7 @@ export function getSlotMetrics({ min: start, max: end, step, timeslots }) {
     )
   )
 
-  function positionFromDate(date) {
+  function positionFromDate(date, { min: start }) {
     const diff = dates.diff(start, date, 'minutes') + getDstOffset(start, date)
     return Math.min(diff, totalMin)
   }
