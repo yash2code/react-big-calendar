@@ -1,5 +1,6 @@
 import cn from 'classnames'
 import React from 'react'
+import ReactTooltip from 'react-tooltip'
 
 /* eslint-disable react/prop-types */
 function TimeGridEvent(props) {
@@ -24,6 +25,7 @@ function TimeGridEvent(props) {
   let start = accessors.start(event)
   let t2 = accessors.t2(event)
   let t3 = accessors.t3(event)
+  console.log(title, t2, t3)
 
   let userProps = getters.eventProp(event, start, end, selected)
 
@@ -61,6 +63,7 @@ function TimeGridEvent(props) {
   return (
     <EventWrapper type="time" {...props}>
       <div
+        data-for="room"
         onClick={onClick}
         onDoubleClick={onDoubleClick}
         style={{
@@ -68,9 +71,11 @@ function TimeGridEvent(props) {
           top: `${top}%`,
           height: `${height}%`,
           background: 'none',
+          border: 'none',
           padding: 0,
           [isRtl ? 'right' : 'left']: `${Math.max(0, xOffset)}%`,
-          width: `${width}%`,
+          // width: `${width}%`,
+          width: '45px',
         }}
         title={
           tooltip
@@ -85,6 +90,21 @@ function TimeGridEvent(props) {
       >
         {inner}
       </div>
+      <ReactTooltip
+        className="roomTooltip"
+        id="room"
+        effect="solid"
+        place={'right'}
+        border={true}
+        type={'light'}
+      >
+        <p>You can put every thing here</p>
+        <ul>
+          <li>Word</li>
+          <li>Chart</li>
+          <li>Else</li>
+        </ul>
+      </ReactTooltip>
     </EventWrapper>
   )
 }

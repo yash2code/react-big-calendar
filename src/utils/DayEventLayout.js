@@ -75,18 +75,18 @@ class Event {
 
     // Containers can always grow.
     if (this.rows) {
-      return overlap
+      return noOverlap
     }
 
     // Rows can grow if they have leaves.
     if (this.leaves) {
-      return this.leaves.length > 0 ? overlap : noOverlap
+      return this.leaves.length > 0 ? noOverlap : noOverlap
     }
 
     // Leaves can grow unless they're the last item in a row.
     const { leaves } = this.row
     const index = leaves.indexOf(this)
-    return index === leaves.length - 1 ? noOverlap : overlap
+    return index === leaves.length - 1 ? noOverlap : noOverlap
   }
 
   get xOffset() {
