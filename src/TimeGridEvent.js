@@ -25,7 +25,7 @@ function TimeGridEvent(props) {
   let start = accessors.start(event)
   let t2 = accessors.t2(event)
   let t3 = accessors.t3(event)
-  console.log(title, t2, t3)
+  // console.log(title, t2, t3)
 
   let userProps = getters.eventProp(event, start, end, selected)
 
@@ -63,7 +63,8 @@ function TimeGridEvent(props) {
   return (
     <EventWrapper type="time" {...props}>
       <div
-        data-for="room"
+        data-for={`room${event.id}`}
+        data-tip="room"
         onClick={onClick}
         onDoubleClick={onDoubleClick}
         style={{
@@ -92,18 +93,38 @@ function TimeGridEvent(props) {
       </div>
       <ReactTooltip
         className="roomTooltip"
-        id="room"
+        id={`room${event.id}`}
         effect="solid"
         place={'right'}
         border={true}
         type={'light'}
       >
-        <p>You can put every thing here</p>
-        <ul>
-          <li>Word</li>
-          <li>Chart</li>
-          <li>Else</li>
+        <div className="header-tooltip">
+          <p>Cars 404</p>
+          <p>3 gems</p>
+        </div>
+        <hr />
+        <ul className="content-tooltip-list">
+          <li>Total Duration: 45 mins</li>
+          <li>Type: 50% Winner</li>
+          <li>Total Respawns : 150</li>
         </ul>
+        <hr />
+        <div className="timeslot-tooltip">
+          <section>
+            <p>T1: 7 AM</p>
+            <p>T2: 7:15 AM</p>
+          </section>
+          <section>
+            <p>T3: 7:30 AM</p>
+            <p>T4: 7:45 AM</p>
+          </section>
+        </div>
+        <hr />
+        <div className="author-tooltip">
+          <p>Created By: Lokesh</p>
+          <p>Date....</p>
+        </div>
       </ReactTooltip>
     </EventWrapper>
   )
