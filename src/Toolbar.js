@@ -2,30 +2,24 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import cn from 'classnames'
 import { navigate } from './utils/constants'
-import { Icon } from 'tabler-react'
+import { Icon, Form } from 'tabler-react'
 
 class Toolbar extends React.Component {
+  state = { value: 'Today' }
+  handleChange = event => {
+    this.setState({ value: event.target.value })
+  }
   render() {
     let {
       localizer: { messages },
       label,
     } = this.props
 
+    // console.log(messages)
+
     return (
       <div className="rbc-toolbar">
         <span className="rbc-btn-group">
-          {/* <button
-            type="button"
-            onClick={this.navigate.bind(null, navigate.TODAY)}
-          >
-            {messages.today}
-          </button> */}
-          {/* <button
-            type="button"
-            onClick={this.navigate.bind(null, navigate.PREVIOUS)}
-          >
-            {messages.previous}
-          </button> */}
           <Icon
             name="chevron-left"
             onClick={this.navigate.bind(null, navigate.PREVIOUS)}
@@ -33,18 +27,39 @@ class Toolbar extends React.Component {
           <span className="rbc-toolbar-label">{label}</span>
           <Icon
             name="chevron-right"
-            onClick={this.navigate.bind(null, navigate.PREVIOUS)}
-          />
-
-          {/* <button
-            type="button"
             onClick={this.navigate.bind(null, navigate.NEXT)}
-          >
-            {messages.next}
-          </button> */}
+          />
         </span>
 
-        <span className="rbc-toolbar-label">{label}</span>
+        {/* <span className="rbc-toolbar-label">
+          <Form.Select
+            label="Filter"
+            value={this.state.value}
+            onChange={this.handleChange}
+          >
+            <option value={messages.today}>Today</option>
+          </Form.Select>
+        </span>
+        <span className="rbc-toolbar-label">
+          <Form.Select
+            label="Filter"
+            value={this.state.value}
+            onChange={this.handleChange}
+          >
+            <option value={messages.today}>Today</option>
+          </Form.Select>
+        </span>
+        <span className="rbc-toolbar-label">
+          <Form.Select
+            label="Filter"
+            value={this.state.value}
+            onChange={this.handleChange}
+          >
+            <option value={messages.yesterday}>Yesterday</option>
+            <option value={messages.today}>Today</option>
+            <option value={messages.tomorrow}>Tomorrow</option>
+          </Form.Select>
+        </span> */}
 
         <span className="rbc-btn-group">{this.viewNamesGroup(messages)}</span>
       </div>

@@ -10,6 +10,8 @@ class Day extends React.Component {
     let { date, ...props } = this.props
     let range = Day.range(date)
 
+    // console.log(this.props, range)
+
     return <TimeGrid {...props} range={range} eventOffset={10} />
   }
 }
