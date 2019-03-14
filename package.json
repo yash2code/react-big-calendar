@@ -126,6 +126,7 @@
     "prop-types-extra": "^1.1.0",
     "react-overlays": "^0.8.3",
     "react-tooltip": "^3.10.0",
+    "tabler-react": "^1.29.0",
     "uncontrollable": "^6.0.0",
     "warning": "^4.0.2"
   },

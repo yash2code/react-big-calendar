@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import cn from 'classnames'
 import { navigate } from './utils/constants'
+import { Icon } from 'tabler-react'
 
 class Toolbar extends React.Component {
   render() {
@@ -19,18 +20,28 @@ class Toolbar extends React.Component {
           >
             {messages.today}
           </button> */}
-          <button
+          {/* <button
             type="button"
             onClick={this.navigate.bind(null, navigate.PREVIOUS)}
           >
             {messages.previous}
-          </button>
-          <button
+          </button> */}
+          <Icon
+            name="chevron-left"
+            onClick={this.navigate.bind(null, navigate.PREVIOUS)}
+          />
+          <span className="rbc-toolbar-label">{label}</span>
+          <Icon
+            name="chevron-right"
+            onClick={this.navigate.bind(null, navigate.PREVIOUS)}
+          />
+
+          {/* <button
             type="button"
             onClick={this.navigate.bind(null, navigate.NEXT)}
           >
             {messages.next}
-          </button>
+          </button> */}
         </span>
 
         <span className="rbc-toolbar-label">{label}</span>
