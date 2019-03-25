@@ -2,10 +2,8 @@ import PropTypes from 'prop-types'
 import React from 'react'
 // import cn from 'classnames'
 import { navigate } from './utils/constants'
-// import leftNav from './assets/nav1.png'
-// import rightNav from './assets/nav2.png'
-import leftNav from './assets/svgnav1.svg'
-import rightNav from './assets/svgnav2.svg'
+import leftNav from './assets/nav1.png'
+import rightNav from './assets/nav2.png'
 
 class Toolbar extends React.Component {
   render() {
