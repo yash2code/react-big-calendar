@@ -2,6 +2,22 @@ import cn from 'classnames'
 import React from 'react'
 import ReactTooltip from 'react-tooltip'
 
+const colors = {}
+function fetchColors(color) {
+  switch (color) {
+    case 'green':
+      return {
+        ...colors,
+        // eslint-disable-next-line no-undef
+        b1: rgb(0, 231, 193),
+        // eslint-disable-next-line no-undef
+        b2: rgb(0, 159, 129),
+        // eslint-disable-next-line no-undef
+        b3: rgb(0, 95, 77),
+      }
+  }
+}
+
 /* eslint-disable react/prop-types */
 function TimeGridEvent(props) {
   const {
@@ -17,17 +33,20 @@ function TimeGridEvent(props) {
     getters,
     onClick,
     onDoubleClick,
+    colorType,
     components: { event: Event, eventWrapper: EventWrapper },
   } = props
-  let title = accessors.title(event)
+  // let title = accessors.title(event)
   let tooltip = accessors.tooltip(event)
   let end = accessors.end(event)
   let start = accessors.start(event)
-  let t2 = accessors.t2(event)
-  let t3 = accessors.t3(event)
+  // let t2 = accessors.t2(event)
+  // let t3 = accessors.t3(event)
   // console.log(title, t2, t3)
 
   let userProps = getters.eventProp(event, start, end, selected)
+
+  let colors = fetchColors(colorType)
 
   let { height, top, width, xOffset, t2height, t3height, t2t3height } = style
   const inner = [
@@ -37,7 +56,7 @@ function TimeGridEvent(props) {
       style={{
         width: '100%',
         height: t2height + '%',
-        background: 'red',
+        background: colors.b1,
       }}
     />,
     <div
@@ -46,7 +65,7 @@ function TimeGridEvent(props) {
       style={{
         width: '100%',
         height: t2t3height + '%',
-        background: 'blue',
+        background: colors.b2,
       }}
     />,
     <div
@@ -55,7 +74,7 @@ function TimeGridEvent(props) {
       style={{
         width: '100%',
         height: t3height + '%',
-        background: 'green',
+        background: colors.b3,
       }}
     />,
   ]

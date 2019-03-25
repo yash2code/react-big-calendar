@@ -177,6 +177,7 @@ class DayColumn extends React.Component {
       components,
       step,
       timeslots,
+      colorType,
     } = this.props
 
     const { slotMetrics } = this
@@ -209,6 +210,7 @@ class DayColumn extends React.Component {
 
       return (
         <TimeGridEvent
+          colorType={colorType}
           style={style}
           event={event}
           label={label}
@@ -366,6 +368,7 @@ DayColumn.propTypes = {
   max: PropTypes.instanceOf(Date).isRequired,
   getNow: PropTypes.func.isRequired,
   isNow: PropTypes.bool,
+  colorType: PropTypes.string,
 
   rtl: PropTypes.bool,
 
