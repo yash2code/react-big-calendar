@@ -8,12 +8,23 @@ function fetchColors(color) {
     case 'green':
       return {
         ...colors,
-        // eslint-disable-next-line no-undef
-        b1: rgb(0, 231, 193),
-        // eslint-disable-next-line no-undef
-        b2: rgb(0, 159, 129),
-        // eslint-disable-next-line no-undef
-        b3: rgb(0, 95, 77),
+        b1: 'rgb(0, 231, 193)',
+        b2: 'rgb(0, 159, 129)',
+        b3: 'rgb(0, 95, 77)',
+      }
+    case 'blue':
+      return {
+        ...colors,
+        b1: '#338fe9',
+        b2: '#1f558c',
+        b3: '#12416f',
+      }
+    default:
+      return {
+        ...colors,
+        b1: 'grey',
+        b2: 'grey',
+        b3: 'grey',
       }
   }
 }
