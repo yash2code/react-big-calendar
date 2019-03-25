@@ -1,14 +1,13 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import cn from 'classnames'
+// import cn from 'classnames'
 import { navigate } from './utils/constants'
-import { Icon, Form } from 'tabler-react'
+// import leftNav from './assets/nav1.png'
+// import rightNav from './assets/nav2.png'
+import leftNav from './assets/svgnav1.svg'
+import rightNav from './assets/svgnav2.svg'
 
 class Toolbar extends React.Component {
-  state = { value: 'Today' }
-  handleChange = event => {
-    this.setState({ value: event.target.value })
-  }
   render() {
     let {
       localizer: { messages },
@@ -20,46 +19,18 @@ class Toolbar extends React.Component {
     return (
       <div className="rbc-toolbar">
         <span className="rbc-btn-group">
-          <Icon
+          <img
+            src={leftNav}
             name="chevron-left"
             onClick={this.navigate.bind(null, navigate.PREVIOUS)}
           />
           <span className="rbc-toolbar-label">{label}</span>
-          <Icon
+          <img
+            src={rightNav}
             name="chevron-right"
             onClick={this.navigate.bind(null, navigate.NEXT)}
           />
         </span>
-
-        {/* <span className="rbc-toolbar-label">
-          <Form.Select
-            label="Filter"
-            value={this.state.value}
-            onChange={this.handleChange}
-          >
-            <option value={messages.today}>Today</option>
-          </Form.Select>
-        </span>
-        <span className="rbc-toolbar-label">
-          <Form.Select
-            label="Filter"
-            value={this.state.value}
-            onChange={this.handleChange}
-          >
-            <option value={messages.today}>Today</option>
-          </Form.Select>
-        </span>
-        <span className="rbc-toolbar-label">
-          <Form.Select
-            label="Filter"
-            value={this.state.value}
-            onChange={this.handleChange}
-          >
-            <option value={messages.yesterday}>Yesterday</option>
-            <option value={messages.today}>Today</option>
-            <option value={messages.tomorrow}>Tomorrow</option>
-          </Form.Select>
-        </span> */}
 
         <span className="rbc-btn-group">{this.viewNamesGroup(messages)}</span>
       </div>

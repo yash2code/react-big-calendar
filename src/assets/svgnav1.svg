@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>svgnav 1</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M9.27743348,8 L4.7331583,3.55174424 C4.42491307,3.25001214 4.41963312,2.75552782 4.72136521,2.44728258 C4.72721978,2.44134406 4.72721978,2.44134406 4.7331583,2.43548949 C5.04516113,2.1300792 5.54406253,2.1300792 5.85606536,2.43548949 L10.9705156,7.44187262 C11.2849604,7.74967334 11.2849604,8.25032666 10.9705156,8.55812738 L5.85606536,13.5645105 C5.54406253,13.8699208 5.04516113,13.8699208 4.7331583,13.5645105 C4.42491307,13.2627784 4.41963312,12.7682941 4.72136521,12.4600489 C4.72721978,12.4541103 4.72721978,12.4541103 4.7331583,12.4482558 L9.27743348,8 Z" id="path-1"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="assets" transform="translate(-350.000000, -176.000000)">
+            <g id="nav-1" transform="translate(350.000000, 176.000000)">
+                <g id="Group-6">
+                    <path d="M1.81360202,5.32907052e-15 L29.9244332,5.32907052e-15 C30.926058,6.92431799e-15 31.7380353,0.81197728 31.7380353,1.81360202 L31.7380353,29.9244332 C31.7380353,30.926058 30.926058,31.7380353 29.9244332,31.7380353 L1.81360202,31.7380353 C0.81197728,31.7380353 -2.18366341e-13,30.926058 -2.20268248e-13,29.9244332 L-2.22044605e-13,1.81360202 C-2.22167269e-13,0.81197728 0.81197728,7.28942284e-15 1.81360202,7.10542736e-15 Z" id="Button" fill="#BBA384" transform="translate(15.869018, 15.869018) scale(-1, 1) translate(-15.869018, -15.869018) "></path>
+                    <g id="icon/cheveron/left" transform="translate(8.000000, 8.000000)">
+                        <rect id="bound" x="0" y="8" width="16" height="16"></rect>
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="Mask" fill="#15161D" fill-rule="nonzero" transform="translate(7.852412, 8.000000) scale(-1, 1) translate(-7.852412, -8.000000) " xlink:href="#path-1"></use>
+                        <g id="element/color/header" mask="url(#mask-2)" fill="#0D0E12" fill-rule="evenodd">
+                            <rect id="swatch" x="0" y="0" width="16.2539683" height="16.2539683"></rect>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
