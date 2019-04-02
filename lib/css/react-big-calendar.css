@@ -735,13 +735,16 @@ button.rbc-input::-moz-focus-inner {
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding-top: 1rem;
 }
 .roomTooltip .header-tooltip p {
   margin: 0;
 }
 .roomTooltip .header-tooltip p:first-child {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 700;
 }
 .roomTooltip .header-tooltip hr {
@@ -753,7 +756,10 @@ button.rbc-input::-moz-focus-inner {
   padding: 0;
 }
 .roomTooltip .content-tooltip-list span {
-  font-size: 2rem;
+  font-size: 1.5rem;
+}
+.roomTooltip .timeslot-tooltip section:first-child {
+  padding-bottom: 1em;
 }
 .roomTooltip .timeslot-tooltip section {
   display: -webkit-flex;
@@ -764,10 +770,13 @@ button.rbc-input::-moz-focus-inner {
           justify-content: space-between;
 }
 .roomTooltip .timeslot-tooltip section p {
-  font-size: 1.8rem;
+  font-size: 1.2rem;
 }
 .roomTooltip .author-tooltip {
-  font-size: 1.8rem;
+  font-size: 1.2rem;
+}
+.roomTooltip .author-tooltip p {
+  margin: 0;
 }
 .roomTooltip hr {
   margin: 5px 0;
