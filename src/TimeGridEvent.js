@@ -1,6 +1,9 @@
 import cn from 'classnames'
 import React from 'react'
 import ReactTooltip from 'react-tooltip'
+import dates from './utils/dates'
+import moment from 'moment'
+import { accessor } from './utils/accessors'
 
 const colors = {}
 function fetchColors(color) {
@@ -47,13 +50,21 @@ function TimeGridEvent(props) {
     colorType,
     components: { event: Event, eventWrapper: EventWrapper },
   } = props
-  // let title = accessors.title(event)
+  let title = accessors.title(event)
   let tooltip = accessors.tooltip(event)
   let end = accessors.end(event)
   let start = accessors.start(event)
-  // let t2 = accessors.t2(event)
-  // let t3 = accessors.t3(event)
-  // console.log(title, t2, t3)
+  let gems = accessors.gems(event)
+  let duration = dates.diff(start, end, 'minutes')
+  let type = accessors.type(event)
+  let respawn = accessors.respawn(event)
+  let t1 = moment(start).format('LT')
+  let t2 = moment(accessors.t2(event)).format('LT')
+  let t3 = moment(accessors.t3(event)).format('LT')
+  let t4 = moment(end).format('LT')
+  let created_by = accessors.created_by(event)
+  let date_created = moment(accessors.date(event)).format('lll')
+  // console.log(moment(start).format('LT'))
 
   let userProps = getters.eventProp(event, start, end, selected)
 
@@ -105,8 +116,8 @@ function TimeGridEvent(props) {
           border: 'none',
           padding: 0,
           [isRtl ? 'right' : 'left']: `${Math.max(0, xOffset)}%`,
-          // width: `${width}%`,
-          width: '45px',
+          width: `${width}%`,
+          maxWidth: '45px',
         }}
         title={
           tooltip
@@ -130,30 +141,36 @@ function TimeGridEvent(props) {
         type={'light'}
       >
         <div className="header-tooltip">
-          <p>Cars 404</p>
-          <p>3 gems</p>
+          <p>{title}</p>
+          <p>{`${gems} gems`}</p>
         </div>
         <hr />
         <ul className="content-tooltip-list">
-          <li>Total Duration: 45 mins</li>
-          <li>Type: 50% Winner</li>
-          <li>Total Respawns : 150</li>
+          <li>
+            Total Duration: <span>{`${duration} mins`}</span>
+          </li>
+          <li>
+            Type: <span>{type}</span>
+          </li>
+          <li>
+            Total Respawns : <span>{respawn}</span>
+          </li>
         </ul>
         <hr />
         <div className="timeslot-tooltip">
           <section>
-            <p>T1: 7 AM</p>
-            <p>T2: 7:15 AM</p>
+            <p>{`T1: ${t1}`}</p>
+            <p>{`T2: ${t2}`}</p>
           </section>
           <section>
-            <p>T3: 7:30 AM</p>
-            <p>T4: 7:45 AM</p>
+            <p>{`T3: ${t3}`}</p>
+            <p>{`T4: ${t4}`}</p>
           </section>
         </div>
         <hr />
         <div className="author-tooltip">
-          <p>Created By: Lokesh</p>
-          <p>Date....</p>
+          <p>{`Created By: ${created_by}`}</p>
+          <p>{date_created}</p>
         </div>
       </ReactTooltip>
     </EventWrapper>

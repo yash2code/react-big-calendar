@@ -1,7 +1,10 @@
+/* eslint-disable no-console */
 import PropTypes from 'prop-types'
 import React from 'react'
 import { findDOMNode } from 'react-dom'
 import cn from 'classnames'
+import { Table } from 'tabler-react'
+import posed from 'react-pose'
 
 import Selection, { getBoundsForNode, isEvent } from './Selection'
 import dates from './utils/dates'
@@ -13,6 +16,29 @@ import * as DayEventLayout from './utils/DayEventLayout'
 import TimeSlotGroup from './TimeSlotGroup'
 import TimeGridEvent from './TimeGridEvent'
 
+const obj = [
+  {
+    games: ['G1', 'G1', 'G1', 'G1'],
+    t1t2: ['5', '0', '2', '4'],
+    t2t3: ['5', '0', '2', '4'],
+    t3t4: ['5', '0', '2', '4'],
+  },
+]
+
+const props = {
+  draggable: 'y',
+  // hoverable: true,
+  // hover: {
+  //   scale: 1.2,
+  // },
+  // init: { scale: 1, boxShadow: '0px 0px 0px rgba(0,0,0,0)' },
+  // drag: { scale: 1.1, boxShadow: '5px 5px 10px rgba(0,0,0,0.5)' },
+  // dragEnd: { transition: { y: { type: 'spring' } } },
+  // dragBounds: { top: '-100%', bottom: '100%' },
+}
+
+const Box = posed.div(props)
+
 class DayColumn extends React.Component {
   state = { selecting: false, timeIndicatorPosition: null }
 
@@ -20,8 +46,14 @@ class DayColumn extends React.Component {
     super(...args)
 
     this.slotMetrics = TimeSlotUtils.getSlotMetrics(this.props)
+    this.fun = this.fun.bind(this)
+    this.onEnd = this.onEnd.bind(this)
+    this._selectCurrent = this._selectCurrent.bind(this)
   }
 
+  fun() {
+    console.log('hi')
+  }
   componentDidMount() {
     this.props.selectable && this._selectable()
 
@@ -78,12 +110,32 @@ class DayColumn extends React.Component {
       this.intervalTriggered = true
       this.positionTimeIndicator()
       this.setTimeIndicatorPositionUpdateInterval()
-    }, 60000)
+    }, 0)
   }
 
   clearTimeIndicatorInterval() {
     this.intervalTriggered = false
     window.clearTimeout(this._timeIndicatorTimeout)
+  }
+
+  getDstOffset(start, end) {
+    return start.getTimezoneOffset() - end.getTimezoneOffset()
+  }
+
+  positionFromCurrentTime(date) {
+    const { getNow } = this.props
+    const current = getNow()
+    const diff =
+      dates.diff(current, date, 'minutes') + this.getDstOffset(current, date)
+    console.log(diff)
+    return diff
+  }
+
+  onEnd() {
+    // console.log(e.target.className)
+    let x = document.getElementById('rbc-current-time-indicator')
+    x.style.transform = 'none'
+    // console.log(x, '----')
   }
 
   positionTimeIndicator() {
@@ -99,6 +151,7 @@ class DayColumn extends React.Component {
   }
 
   render() {
+    // console.log(this.props.components)
     const {
       max,
       rtl,
@@ -107,7 +160,11 @@ class DayColumn extends React.Component {
       accessors,
       localizer,
       getters: { dayProp, ...getters },
-      components: { eventContainerWrapper: EventContainer, ...components },
+      components: {
+        eventContainerWrapper: EventContainer,
+        // eventWrapper: EventWrapper,
+        ...components
+      },
     } = this.props
 
     let { slotMetrics } = this
@@ -156,11 +213,63 @@ class DayColumn extends React.Component {
             <span>{localizer.format(selectDates, 'selectRangeFormat')}</span>
           </div>
         )}
+
         {isNow && (
-          <div
-            className="rbc-current-time-indicator"
+          <Box
+            onValueChange={{ y: x => console.log(x) }}
+            className=" abc rbc-current-time-indicator"
+            id="rbc-current-time-indicator"
+            onDragEnd={this.onEnd}
             style={{ top: `${this.state.timeIndicatorPosition}%` }}
-          />
+          >
+            {/* <div className="abc current-time-box">
+              <Table>
+                <Table.Body>
+                  <Table.Row>
+                    <Table.Col>Time</Table.Col>
+
+                    {obj.map((o, i) => (
+                      <React.Fragment key={i}>
+                        {o.games.map((e, i) => (
+                          <Table.Col key={i}>{e}</Table.Col>
+                        ))}
+                      </React.Fragment>
+                    ))}
+                  </Table.Row>
+                  <Table.Row>
+                    <Table.Col>T1-T2</Table.Col>
+                    {obj.map((o, i) => (
+                      <React.Fragment key={i}>
+                        {o.t1t2.map((e, i) => (
+                          <Table.Col key={i}>{e}</Table.Col>
+                        ))}
+                      </React.Fragment>
+                    ))}
+                  </Table.Row>
+                  <Table.Row>
+                    <Table.Col>T2-T3</Table.Col>
+                    {obj.map((o, i) => (
+                      <React.Fragment key={i}>
+                        {o.t2t3.map((e, i) => (
+                          <Table.Col key={i}>{e}</Table.Col>
+                        ))}
+                      </React.Fragment>
+                    ))}
+                  </Table.Row>
+                  <Table.Row>
+                    <Table.Col>T3-T4</Table.Col>
+                    {obj.map((o, i) => (
+                      <React.Fragment key={i}>
+                        {o.t3t4.map((e, i) => (
+                          <Table.Col key={i}>{e}</Table.Col>
+                        ))}
+                      </React.Fragment>
+                    ))}
+                  </Table.Row>
+                </Table.Body>
+              </Table>
+            </div> */}
+          </Box>
         )}
       </div>
     )
@@ -231,6 +340,7 @@ class DayColumn extends React.Component {
 
   _selectable = () => {
     let node = findDOMNode(this)
+    console.log(node)
     let selector = (this._selector = new Selection(() => findDOMNode(this), {
       longPressThreshold: this.props.longPressThreshold,
     }))
@@ -350,8 +460,13 @@ class DayColumn extends React.Component {
       box,
     })
   }
+  _selectCurrent = (...args) => {
+    console.log('clicked')
+    notify(this.props.onSelectCurrent, args)
+  }
 
   _select = (...args) => {
+    console.log('cliked')
     notify(this.props.onSelectEvent, args)
   }
 
@@ -389,6 +504,8 @@ DayColumn.propTypes = {
   onSelecting: PropTypes.func,
   onSelectSlot: PropTypes.func.isRequired,
   onSelectEvent: PropTypes.func.isRequired,
+  onSelectCurrent: PropTypes.func,
+
   onDoubleClickEvent: PropTypes.func.isRequired,
 
   className: PropTypes.string,

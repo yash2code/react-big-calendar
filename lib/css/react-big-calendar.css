@@ -98,7 +98,7 @@ button.rbc-input::-moz-focus-inner {
   z-index: 4;
 }
 .rbc-today {
-  background-color: #eaf6ff;
+  background-color: unset;
 }
 .rbc-toolbar {
   display: -webkit-flex;
@@ -694,13 +694,87 @@ button.rbc-input::-moz-focus-inner {
    -ms-user-select: none;
        user-select: none;
   -webkit-user-select: none;
+  background: #323a5d;
 }
 .rbc-current-time-indicator {
   position: absolute;
   z-index: 3;
   left: 0;
   right: 0;
-  height: 1px;
-  background-color: #74ad31;
-  pointer-events: none;
+  height: 5px;
+  background-color: #ffffff;
+}
+.current-time-box {
+  height: 18rem;
+  font-size: 2rem;
+  width: 50%;
+  margin-left: 66rem;
+  margin-top: -9rem;
+  background: #ffffff;
+  border: 1px solid #323a5d;
+}
+.current-time-box table {
+  text-align: center;
+}
+.current-time-box table tbody:last-child td {
+  padding-bottom: 7px;
+}
+.current-time-box table td {
+  border: 1px solid #ddd;
+}
+.__react_component_tooltip.show {
+  opacity: 1;
+}
+.roomTooltip {
+  width: 25em;
+}
+.roomTooltip .header-tooltip {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-top: 1rem;
+}
+.roomTooltip .header-tooltip p {
+  margin: 0;
+}
+.roomTooltip .header-tooltip p:first-child {
+  font-size: 2rem;
+  font-weight: 700;
+}
+.roomTooltip .header-tooltip hr {
+  margin: 1rem 0;
+}
+.roomTooltip .content-tooltip-list {
+  margin: 0;
+  list-style: none;
+  padding: 0;
+}
+.roomTooltip .content-tooltip-list span {
+  font-size: 2rem;
+}
+.roomTooltip .timeslot-tooltip section {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.roomTooltip .timeslot-tooltip section p {
+  font-size: 1.8rem;
+}
+.roomTooltip .author-tooltip {
+  font-size: 1.8rem;
+}
+.roomTooltip hr {
+  margin: 5px 0;
+}
+.__react_component_tooltip.type-light.border {
+  border: none;
+}
+.__react_component_tooltip {
+  border-radius: 6px;
 }

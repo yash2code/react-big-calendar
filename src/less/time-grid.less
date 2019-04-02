@@ -95,9 +95,9 @@
     border-right: 1px solid @cell-border;
   }
 
-  >.rbc-row.rbc-row-resource {
-      border-bottom: 1px solid @cell-border;
-      flex-shrink: 0;
+  > .rbc-row.rbc-row-resource {
+    border-bottom: 1px solid @cell-border;
+    flex-shrink: 0;
   }
 }
 
@@ -127,6 +127,7 @@
     width: 100%;
     user-select: none;
     -webkit-user-select: none;
+    background: #323a5d;
   }
 }
 
@@ -135,8 +136,87 @@
   z-index: 3;
   left: 0;
   right: 0;
-  height: 1px;
-
+  // height: 3px;
+  height: 5px;
+  // width: 70%;
   background-color: @current-time-color;
-  pointer-events: none;
+  // pointer-events: none;
+}
+
+.current-time-box {
+  height: 18rem;
+  font-size: 2rem;
+  width: 50%;
+  margin-left: 66rem;
+  margin-top: -9rem;
+  background: #ffffff;
+  border: 1px solid #323a5d;
+  // border-radius: 1rem;
+  table {
+    text-align: center;
+    tbody:last-child {
+      td {
+        padding-bottom: 7px;
+      }
+    }
+    td {
+      border: 1px solid #ddd;
+    }
+  }
+}
+
+.__react_component_tooltip.show {
+  opacity: 1;
+}
+
+.roomTooltip {
+  width: 25em;
+  .header-tooltip {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1rem;
+    p {
+      margin: 0;
+    }
+    p:first-child {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+    hr {
+      margin: 1rem 0;
+    }
+  }
+
+  .content-tooltip-list {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+    span {
+      font-size: 2rem;
+    }
+  }
+
+  .timeslot-tooltip {
+    section {
+      display: flex;
+      justify-content: space-between;
+      p {
+        font-size: 1.8rem;
+      }
+    }
+  }
+  .author-tooltip {
+    font-size: 1.8rem;
+  }
+  hr {
+    margin: 5px 0;
+  }
+}
+
+.__react_component_tooltip.type-light.border {
+  border: none;
+}
+
+.__react_component_tooltip {
+  border-radius: 6px;
 }

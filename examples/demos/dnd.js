@@ -84,7 +84,7 @@ class Dnd extends React.Component {
         onEventResize={this.resizeEvent}
         onSelectSlot={this.newEvent}
         defaultView={BigCalendar.Views.MONTH}
-        defaultDate={new Date(2015, 3, 12)}
+        defaultDate={new Date()}
       />
     )
   }
