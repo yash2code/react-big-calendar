@@ -214,15 +214,15 @@ class DayColumn extends React.Component {
           </div>
         )}
 
-        {isNow && (
+        {/* {isNow && (
           <Box
             onValueChange={{ y: x => console.log(x) }}
             className=" abc rbc-current-time-indicator"
             id="rbc-current-time-indicator"
             onDragEnd={this.onEnd}
             style={{ top: `${this.state.timeIndicatorPosition}%` }}
-          >
-            {/* <div className="abc current-time-box">
+          > */}
+        {/* <div className="abc current-time-box">
               <Table>
                 <Table.Body>
                   <Table.Row>
@@ -269,8 +269,8 @@ class DayColumn extends React.Component {
                 </Table.Body>
               </Table>
             </div> */}
-          </Box>
-        )}
+        {/* </Box>
+        )} */}
       </div>
     )
   }

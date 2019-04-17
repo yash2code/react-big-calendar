@@ -64,42 +64,55 @@ function TimeGridEvent(props) {
   let t4 = moment(end).format('LT')
   let created_by = accessors.created_by(event)
   let date_created = moment(accessors.date(event)).format('lll')
+  // let color = accessors.color(event)
   // console.log(moment(start).format('LT'))
 
   let userProps = getters.eventProp(event, start, end, selected)
 
-  let colors = fetchColors(colorType)
+  let validation = accessors.validation(event)
+  let isSimulated = accessors.isSimulated(event)
+  let colors = !isSimulated ? fetchColors(colorType) : fetchColors('blue')
 
   let { height, top, width, xOffset, t2height, t3height, t2t3height } = style
-  const inner = [
+  const inner = !validation ? (
+    [
+      <div
+        key="1"
+        className="rbc-event-first"
+        style={{
+          width: '100%',
+          height: t2height + '%',
+          background: colors.b1,
+        }}
+      />,
+      <div
+        key="2"
+        className="rbc-event-second"
+        style={{
+          width: '100%',
+          height: t2t3height + '%',
+          background: colors.b2,
+        }}
+      />,
+      <div
+        key="3"
+        className="rbc-event-third"
+        style={{
+          width: '100%',
+          height: t3height + '%',
+          background: colors.b3,
+        }}
+      />,
+    ]
+  ) : (
     <div
-      key="1"
-      className="rbc-event-first"
       style={{
         width: '100%',
-        height: t2height + '%',
-        background: colors.b1,
+        height: '100%',
+        background: 'red',
       }}
-    />,
-    <div
-      key="2"
-      className="rbc-event-second"
-      style={{
-        width: '100%',
-        height: t2t3height + '%',
-        background: colors.b2,
-      }}
-    />,
-    <div
-      key="3"
-      className="rbc-event-third"
-      style={{
-        width: '100%',
-        height: t3height + '%',
-        background: colors.b3,
-      }}
-    />,
-  ]
+    />
+  )
 
   return (
     <EventWrapper type="time" {...props}>
@@ -115,9 +128,11 @@ function TimeGridEvent(props) {
           background: 'none',
           border: 'none',
           padding: 0,
-          [isRtl ? 'right' : 'left']: `${Math.max(0, xOffset)}%`,
-          width: `${width}%`,
-          maxWidth: '45px',
+          [isRtl ? 'right' : 'left']: validation
+            ? 0
+            : `${Math.max(0, xOffset)}%`,
+          width: validation ? '100%' : `${width}%`,
+          maxWidth: validation ? '100%' : '45px',
         }}
         title={
           tooltip

@@ -8,30 +8,40 @@ const myEventsList = [
     id: 0,
     title: 'Cars 444',
     resourceId: 1,
-    start: new Date(2019, 3, 2, 9, 0, 0),
-    t2: new Date(2019, 3, 2, 9, 20, 0),
-    t3: new Date(2019, 3, 2, 9, 30, 0),
-    end: new Date(2019, 3, 2, 9, 45, 0),
+    start: new Date(2019, 3, 20, 9, 0, 0),
+    t2: new Date(2019, 3, 20, 9, 20, 0),
+    t3: new Date(2019, 3, 20, 9, 30, 0),
+    end: new Date(2019, 3, 20, 9, 45, 0),
     gems: '3',
     type: '50% Winner',
     respawn: '10',
     created_by: 'ABC',
     date: new Date(2019, 3, 2, 9, 0, 0),
+    isSimulated: true,
   },
   {
     id: 234,
-    title: 'fasda',
+    title: '2 Planes',
     resourceId: 1,
-    start: new Date(2019, 3, 2, 9, 20, 0),
-    t2: new Date(2019, 3, 2, 9, 30, 0),
-    t3: new Date(2019, 3, 2, 9, 50, 0),
-    end: new Date(2019, 3, 2, 10, 30, 0),
+    start: new Date(2019, 3, 21, 9, 20, 0),
+    t2: new Date(2019, 3, 21, 9, 30, 0),
+    t3: new Date(2019, 3, 21, 9, 50, 0),
+    end: new Date(2019, 3, 21, 10, 30, 0),
     gems: '3',
     type: '10% Winner',
     respawn: '50',
     created_by: 'JKL',
     date: new Date(2019, 3, 2, 9, 20, 0),
+    isSimulated: false,
   },
+  // {
+  //   id: 2,
+  //   validation: true,
+  //   resourceId: 1,
+  //   start: new Date(2019, 3, 2, 9, 0, 0),
+
+  //   end: new Date(2019, 3, 2, 9, 30, 0),
+  // },
   // {
   //   id: 23,
   //   title: 'fasda',
@@ -126,22 +136,22 @@ let Basic = ({ localizer }) => (
   <BigCalendar
     popup
     // selectable
-    colorType="blue"
+    colorType="green"
     // min={this.state.startTime}
     // max={this.state.endTime}
     step={30}
     timeslots={1}
     localizer={localizer}
     events={myEventsList}
-    defaultView={BigCalendar.Views.DAY}
+    defaultView={BigCalendar.Views.WEEK}
     defaultDate={new Date()}
-    views={{ day: true }}
+    views={{ day: true, week: true }}
     showMultiDayTimes
     // onSelectEvent={event => alert(event.title)}
     // onSelectSlot={this.handleSelect}
     startAccessor="start"
     endAccessor="end"
-    resources={resourceMap}
+    // resources={resourceMap}
     resourceIdAccessor="resourceId"
     resourceTitleAccessor="resourceTitle"
     tooltipAccessor={() => null}
