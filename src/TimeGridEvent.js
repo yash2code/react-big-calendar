@@ -165,10 +165,7 @@ function TimeGridEvent(props) {
             Total Duration: <span>{`${duration} mins`}</span>
           </li>
           <li>
-            Type: <span>{type}</span>
-          </li>
-          <li>
-            Total Respawns : <span>{respawn}</span>
+            Type: <span>{`${type}% Winners`}</span>
           </li>
         </ul>
         <hr />
