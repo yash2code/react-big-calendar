@@ -169,10 +169,10 @@ function TimeGridEvent(props) {
             Total Duration: <span>{`${duration} mins`}</span>
           </li>
           <li>
-            Percentage: <span>{`${type}% Winners`}</span>
+            Type: <span>{`${type}% Winners`}</span>
           </li>
           <li>
-            Type: <span>{`${wdf}`}</span>
+            <span className="type">{`${wdf}`}</span>
           </li>
         </ul>
         <hr />
@@ -189,8 +189,8 @@ function TimeGridEvent(props) {
         <hr />
         <div className="author-tooltip">
           <div className="row-1">
-            <p>{`Created By: ${created_by}`}</p>
-            <p>
+            <p>{`Created By: ${created_by.split(' ')[0]}`}</p>
+            <p className="view-more">
               <a>{`View More`}</a>
             </p>
           </div>
