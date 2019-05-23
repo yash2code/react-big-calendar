@@ -775,6 +775,17 @@ button.rbc-input::-moz-focus-inner {
 .roomTooltip .author-tooltip {
   font-size: 1.2rem;
 }
+.roomTooltip .author-tooltip .row-1 {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.roomTooltip .author-tooltip .row-1 a {
+  cursor: pointer;
+}
 .roomTooltip .author-tooltip p {
   margin: 0;
 }

@@ -771,6 +771,7 @@ class Calendar extends React.Component {
     validation: 'validation',
     colorAccessor: 'color',
     resourceIdAccessor: 'id',
+    wdfAccessor: 'wdf',
     resourceTitleAccessor: 'title',
 
     longPressThreshold: 250,
@@ -799,6 +800,7 @@ class Calendar extends React.Component {
     typeAccessor,
     respawnAccessor,
     dateAccessor,
+    wdfAccessor,
     allDayAccessor,
     createdByAccessor,
     tooltipAccessor,
@@ -842,6 +844,7 @@ class Calendar extends React.Component {
         end: wrapAccessor(endAccessor),
         t2: wrapAccessor(t2Accessor),
         t3: wrapAccessor(t3Accessor),
+        wdf: wrapAccessor(wdfAccessor),
         color: wrapAccessor(colorAccessor),
         gems: wrapAccessor(gemsAccessor),
         type: wrapAccessor(typeAccessor),

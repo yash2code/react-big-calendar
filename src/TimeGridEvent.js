@@ -62,10 +62,11 @@ function TimeGridEvent(props) {
   let t2 = moment(accessors.t2(event)).format('LT')
   let t3 = moment(accessors.t3(event)).format('LT')
   let t4 = moment(end).format('LT')
+  let wdf = accessors.wdf(event)
   let created_by = accessors.created_by(event)
   let date_created = moment(accessors.date(event)).format('lll')
   // let color = accessors.color(event)
-  // console.log(moment(start).format('LT'))
+  console.log(wdf)
 
   let userProps = getters.eventProp(event, start, end, selected)
 
@@ -154,6 +155,9 @@ function TimeGridEvent(props) {
         place={'right'}
         border={true}
         type={'light'}
+        delayHide={500}
+        // delayUpdate="1000"
+        clickable={true}
       >
         <div className="header-tooltip">
           <p>{title}</p>
@@ -165,7 +169,10 @@ function TimeGridEvent(props) {
             Total Duration: <span>{`${duration} mins`}</span>
           </li>
           <li>
-            Type: <span>{`${type}% Winners`}</span>
+            Percentage: <span>{`${type}% Winners`}</span>
+          </li>
+          <li>
+            Type: <span>{`${wdf}`}</span>
           </li>
         </ul>
         <hr />
@@ -181,7 +188,12 @@ function TimeGridEvent(props) {
         </div>
         <hr />
         <div className="author-tooltip">
-          <p>{`Created By: ${created_by}`}</p>
+          <div className="row-1">
+            <p>{`Created By: ${created_by}`}</p>
+            <p>
+              <a>{`View More`}</a>
+            </p>
+          </div>
           <p>{date_created}</p>
         </div>
       </ReactTooltip>

@@ -8,31 +8,33 @@ const myEventsList = [
     id: 0,
     title: 'Cars 444',
     resourceId: 1,
-    start: new Date(2019, 3, 20, 9, 0, 0),
-    t2: new Date(2019, 3, 20, 9, 20, 0),
-    t3: new Date(2019, 3, 20, 9, 30, 0),
-    end: new Date(2019, 3, 20, 9, 45, 0),
+    start: new Date(2019, 4, 24, 9, 0, 0),
+    t2: new Date(2019, 4, 24, 9, 24, 0),
+    t3: new Date(2019, 4, 24, 9, 30, 0),
+    end: new Date(2019, 4, 24, 9, 45, 0),
     gems: '3',
-    type: '50% Winner',
+    type: '50% ',
     respawn: '10',
     created_by: 'ABC',
     date: new Date(2019, 3, 2, 9, 0, 0),
     isSimulated: true,
+    wdf: 'FLAT',
   },
   {
     id: 234,
     title: '2 Planes',
-    resourceId: 1,
-    start: new Date(2019, 3, 21, 9, 20, 0),
-    t2: new Date(2019, 3, 21, 9, 30, 0),
-    t3: new Date(2019, 3, 21, 9, 50, 0),
-    end: new Date(2019, 3, 21, 10, 30, 0),
+    resourceId: 2,
+    start: new Date(2019, 4, 24, 9, 20, 0),
+    t2: new Date(2019, 4, 24, 9, 30, 0),
+    t3: new Date(2019, 4, 24, 9, 50, 0),
+    end: new Date(2019, 4, 24, 10, 30, 0),
     gems: '3',
-    type: '10% Winner',
+    type: '10% ',
     respawn: '50',
     created_by: 'JKL',
     date: new Date(2019, 3, 2, 9, 20, 0),
     isSimulated: false,
+    wdf: 'Exponnetial',
   },
   // {
   //   id: 2,
@@ -143,15 +145,15 @@ let Basic = ({ localizer }) => (
     timeslots={1}
     localizer={localizer}
     events={myEventsList}
-    defaultView={BigCalendar.Views.WEEK}
+    defaultView={BigCalendar.Views.DAY}
     defaultDate={new Date()}
-    views={{ day: true, week: true }}
+    views={{ day: true }}
     showMultiDayTimes
     // onSelectEvent={event => alert(event.title)}
     // onSelectSlot={this.handleSelect}
     startAccessor="start"
     endAccessor="end"
-    // resources={resourceMap}
+    resources={resourceMap}
     resourceIdAccessor="resourceId"
     resourceTitleAccessor="resourceTitle"
     tooltipAccessor={() => null}
