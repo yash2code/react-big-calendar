@@ -189,7 +189,7 @@ function TimeGridEvent(props) {
         <hr />
         <div className="author-tooltip">
           <div className="row-1">
-            <p>{`Created By: ${created_by.split(' ')[0]}`}</p>
+            <p>{`Created By: ${created_by && created_by.split(' ')[0]}`}</p>
             <p className="view-more">
               <a>{`View More`}</a>
             </p>
