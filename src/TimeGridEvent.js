@@ -66,7 +66,7 @@ function TimeGridEvent(props) {
   let created_by = accessors.created_by(event)
   let date_created = moment(accessors.date(event)).format('lll')
   // let color = accessors.color(event)
-  console.log(wdf)
+  // console.log(wdf)
 
   let userProps = getters.eventProp(event, start, end, selected)
 
@@ -128,7 +128,7 @@ function TimeGridEvent(props) {
           height: `${height}%`,
           background: 'none',
           border: 'none',
-          padding: 0,
+          padding: '3px',
           [isRtl ? 'right' : 'left']: validation
             ? 0
             : `${Math.max(0, xOffset)}%`,

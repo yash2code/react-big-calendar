@@ -2,7 +2,7 @@ import dates from './dates'
 
 const getDstOffset = (start, end) => {
   if (start && end) {
-    console.log()
+    // console.log()
   } else return
   let offset = start.getTimezoneOffset() - end.getTimezoneOffset()
   if (offset) return offset
@@ -146,7 +146,7 @@ export function getSlotMetrics({ min: start, max: end, step, timeslots }) {
       const height = (rangeEndMin / (step * numSlots)) * 100 - top
       const t2t3height =
         (t3rangeStart / (step * numSlots)) * 100 - top - t2height
-
+      console.log(t2height, 't2----')
       return {
         top: top,
         height: (rangeEndMin / (step * numSlots)) * 100 - top,
@@ -155,11 +155,17 @@ export function getSlotMetrics({ min: start, max: end, step, timeslots }) {
         end: positionFromDate(rangeEnd),
         endDate: rangeEnd,
         t2end: t2rangeEnd,
-        t2height: (t2rangeEnd / (step * numSlots)) * 100 - top,
+        t2height: (t2rangeEnd / (step * numSlots)) * 100 - top - 0.1,
         // t3start: t3rangeStart,
         t3height: height - t2height - t2t3height,
         // t2t3range: t2t3,
-        t2t3height: (t3rangeStart / (step * numSlots)) * 100 - top - t2height,
+        t2t3height:
+          // t2t3height < 0
+          //   ?
+          //       (t3rangeStart / (step * numSlots)) * 100 - top - t2height
+
+          //   :
+          (t3rangeStart / (step * numSlots)) * 100 - top - t2height,
       }
     },
   }
