@@ -19,6 +19,7 @@ const myEventsList = [
     date: new Date(2019, 3, 2, 9, 0, 0),
     isSimulated: true,
     wdf: 'FLAT',
+    tempId: 'tsgdfd234rtgdfr4gf',
   },
   {
     id: 234,

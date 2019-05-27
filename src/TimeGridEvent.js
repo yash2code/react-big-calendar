@@ -6,6 +6,7 @@ import moment from 'moment'
 import { accessor } from './utils/accessors'
 
 const colors = {}
+
 function fetchColors(color) {
   switch (color) {
     case 'green':
@@ -58,6 +59,8 @@ function TimeGridEvent(props) {
   let duration = dates.diff(start, end, 'minutes')
   let type = accessors.type(event)
   let respawn = accessors.respawn(event)
+  let tempId = accessors.tempId(event)
+  let openModal = accessors.openModal(event)
   let t1 = moment(start).format('LT')
   let t2 = moment(accessors.t2(event)).format('LT')
   let t3 = moment(accessors.t3(event)).format('LT')
@@ -66,7 +69,7 @@ function TimeGridEvent(props) {
   let created_by = accessors.created_by(event)
   let date_created = moment(accessors.date(event)).format('lll')
   // let color = accessors.color(event)
-  // console.log(wdf)
+  console.log(openModal)
 
   let userProps = getters.eventProp(event, start, end, selected)
 
@@ -191,7 +194,7 @@ function TimeGridEvent(props) {
           <div className="row-1">
             <p>{`Created By: ${created_by && created_by.split(' ')[0]}`}</p>
             <p className="view-more">
-              <a>{`View More`}</a>
+              <a onClick={() => openModal(tempId)}>{`View More`}</a>
             </p>
           </div>
           <p>{date_created}</p>
