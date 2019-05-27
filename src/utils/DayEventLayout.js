@@ -49,24 +49,36 @@ class Event {
     // The container event's width is determined by the maximum number of
     // events in any of its rows.
     if (this.rows) {
+      // console.log(this.rows, 'this.rows')
       const columns =
         this.rows.reduce(
           (max, row) => Math.max(max, row.leaves.length + 1), // add itself
           0
         ) + 1 // add the container
 
+      // console.log(columns, 'columns')
+
       return 100 / columns
     }
 
     const availableWidth = 100 - this.container._width
 
+    // console.log(availableWidth, 'availableWidth')
+
     // The row event's width is the space left by the container, divided
     // among itself and its leaves.
     if (this.leaves) {
+      // console.log(
+      //   this.leaves,
+      //   'this.leaves',
+      //   availableWidth / (this.leaves.length + 1)
+      // )
+
       return availableWidth / (this.leaves.length + 1)
     }
 
     // The leaf event's width is determined by its row's width
+    // console.log(this.row._width)
     return this.row._width
   }
 

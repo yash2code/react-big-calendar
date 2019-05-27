@@ -35,6 +35,7 @@ function fetchColors(color) {
 
 /* eslint-disable react/prop-types */
 function TimeGridEvent(props) {
+  // console.log(props)
   const {
     style,
     className,
@@ -136,7 +137,7 @@ function TimeGridEvent(props) {
             ? 0
             : `${Math.max(0, xOffset)}%`,
           width: validation ? '100%' : `${width}%`,
-          maxWidth: validation ? '100%' : '45px',
+          maxWidth: validation ? '100%' : `${15}%`,
         }}
         title={
           tooltip
