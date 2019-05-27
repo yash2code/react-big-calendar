@@ -69,7 +69,7 @@ function TimeGridEvent(props) {
   let created_by = accessors.created_by(event)
   let date_created = moment(accessors.date(event)).format('lll')
   // let color = accessors.color(event)
-  console.log(openModal)
+  // console.log(openModal)
 
   let userProps = getters.eventProp(event, start, end, selected)
 
