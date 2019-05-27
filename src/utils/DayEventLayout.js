@@ -30,14 +30,16 @@ class Event {
     this.height = height
     this.data = data
     this.t2 = t2
-    this.t2height = (t2height / height) * 100
+    this.t2height =
+      t2t3height < 0
+        ? 100 - (t3height / height) * 100
+        : (t2height / height) * 100
     this.t3 = t3
     this.t3height = (t3height / height) * 100
     this.t2t3 = t2t3
-    this.t2t3height =
-      t2t3height < 0 ? 100 - this.t2height : (t2t3height / height) * 100
+    this.t2t3height = t2t3height < 0 ? 0 : (t2t3height / height) * 100
 
-    console.log(this.t2height, '1st b', this.t2t3height, '2nd b', t2t3height)
+    // console.log(this.t2height, '1st b', this.t3height, '3rd b', t3height)
   }
 
   /**

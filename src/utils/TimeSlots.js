@@ -146,7 +146,7 @@ export function getSlotMetrics({ min: start, max: end, step, timeslots }) {
       const height = (rangeEndMin / (step * numSlots)) * 100 - top
       const t2t3height =
         (t3rangeStart / (step * numSlots)) * 100 - top - t2height
-      console.log(t2height, 't2----')
+      // console.log(t2height, 't2----')
       return {
         top: top,
         height: (rangeEndMin / (step * numSlots)) * 100 - top,

@@ -155,8 +155,8 @@ function TimeGridEvent(props) {
         place={'right'}
         border={true}
         type={'light'}
-        delayHide={500}
-        // delayUpdate="1000"
+        delayHide={200}
+        delayUpdate={200}
         clickable={true}
       >
         <div className="header-tooltip">
